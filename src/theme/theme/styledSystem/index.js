@@ -1,0 +1,1 @@
+export { styledSystem } from "./styledSystem";

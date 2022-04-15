@@ -1,0 +1,25 @@
+// see the following documentation for more info:
+// https://code.visualstudio.com/docs/languages/jsconfig
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@containers/*": ["src/containers/*"],
+      "@config/*": ["src/config/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@navigation/*": ["src/navigation/*"],
+      "@providers/*": ["src/providers/*"],
+      "@screens/*": ["src/screens/*"],
+      "@shared/*": ["src/shared/*"],
+      "@static/*": ["src/static/*"],
+      "@stores/*": ["src/stores/*"],
+      "@utils/*": ["src/utils/*"],
+      "@theme/*": ["src/theme/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}

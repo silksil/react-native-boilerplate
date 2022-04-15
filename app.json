@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "Seespine",
+    "slug": "my-app",
+    "version": "1.0.1",
+    "orientation": "portrait",
+    "platforms": ["ios"],
+    "icon": "./src/static/images/icon.png",
+    "scheme": "seespine",
+    "splash": {
+      "image": "./src/static/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "usesAppleSignIn": true,
+      "supportsTablet": true,
+      "bundleIdentifier": "com.seespine.seespine"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./src/static/images/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
