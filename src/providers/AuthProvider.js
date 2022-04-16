@@ -35,7 +35,8 @@ const AuthProvider = ({ children }) => {
     }
   }, [appleCredentials, isLoggedIn, loginMutation]);
 
-  const login = async () => {
+  const login = async props => {
+    console.log(props);
     try {
       const credentials = await signInAsync({
         requestedScopes: [

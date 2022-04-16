@@ -2,6 +2,7 @@ import { Icon, Input } from "@ui-kitten/components";
 import { bool, string } from "prop-types";
 import React, { useState, useRef } from "react";
 import { TouchableWithoutFeedback } from "react-native";
+import { useController } from "react-hook-form";
 
 import FormGroup from "../FormGroup";
 
@@ -15,10 +16,11 @@ const PasswordInput = ({
   disabled = false,
   isRequired,
   showIsRequired,
+  control,
   ...props
 }) => {
   const ref = useRef();
-  const [setValue, value] = useState();
+  const { field } = useController({ control, defaultValue, name });
   const [error, setError] = useState();
   const [isFocused, setFocus] = useState(false);
   const [secureTextEntry, setSecureTextEntry] = useState(true);
@@ -33,7 +35,6 @@ const PasswordInput = ({
   const toggleSecureEntry = () => {
     setSecureTextEntry(!secureTextEntry);
   };
-
   const renderIcon = () => (
     <TouchableWithoutFeedback onPress={toggleSecureEntry}>
       <Icon name="eye" />
@@ -44,16 +45,15 @@ const PasswordInput = ({
     <FormGroup>
       <Input
         ref={ref}
+        value={field.value}
+        onChangeText={field.onChange}
         label={label && labelText}
-        status={error ? "danger" : "basic "}
+        status={error ? "danger" : "basic"}
         caption={showCaptionMessage ? captionMessage : undefined}
         captionIcon={showCaptionMessage && AlertIcon}
-        value={value || ""}
-        onChangeText={setValue}
         disabled={disabled}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}
-        accessoryRight={renderIcon}
         secureTextEntry={secureTextEntry}
         {...props}
       />

@@ -23,7 +23,7 @@ https://medium.com/@tetsuyahasegawa/how-to-integrate-react-native-debugger-to-yo
 5. Drag and drop the the .ipa file in the Transport er app
 6. Send file to App Store
 7. Go to https://appstoreconnect.apple.com/login
-8. Go to the Seespine app and click on the tab "Testflight" and deploy.
+8. Go to the MyApp app and click on the tab "Testflight" and deploy.
 9. Open the Testflight app on your mobile and download/update the app
 
 https://docs.expo.io/submit/ios/

@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "Seespine",
+    "name": "my-app",
     "slug": "my-app",
     "version": "1.0.1",
     "orientation": "portrait",
     "platforms": ["ios"],
     "icon": "./src/static/images/icon.png",
-    "scheme": "seespine",
+    "scheme": "MyApp",
     "splash": {
       "image": "./src/static/images/splash.png",
       "resizeMode": "contain",
@@ -19,7 +19,7 @@
     "ios": {
       "usesAppleSignIn": true,
       "supportsTablet": true,
-      "bundleIdentifier": "com.seespine.seespine"
+      "bundleIdentifier": "com.MyApp.MyApp"
     },
     "android": {
       "adaptiveIcon": {

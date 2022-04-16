@@ -5,12 +5,12 @@ import React, { forwardRef } from "react";
 
 import { TabStack } from "./TabStack";
 import { BookDetail } from "@screens/bookDetail";
-import { useAccount } from "@hooks/useAccount";
+import { useAuth } from "@hooks/useAuth";
 import { Login } from "@screens/Login";
 
 const NavigationContainer = forwardRef(({ initialState }, ref) => {
   const { Navigator, Screen } = createStackNavigator();
-  const { isLoggedIn } = useAccount();
+  const { isLoggedIn } = useAuth();
 
   return (
     <BaseNavigationContainer ref={ref} initialState={initialState || undefined}>

@@ -1,6 +1,7 @@
 import { Icon, Input } from "@ui-kitten/components";
 import { bool, string } from "prop-types";
 import React, { useState, useRef } from "react";
+import { useController } from "react-hook-form";
 
 import FormGroup from "./FormGroup";
 
@@ -14,12 +15,12 @@ const TextInput = ({
   disabled = false,
   isRequired,
   showIsRequired,
+  control,
   ...props
 }) => {
-  const [setValue, value] = useState();
-  const [error, setError] = useState();
   const ref = useRef();
-
+  const { field } = useController({ control, defaultValue, name });
+  const [error, setError] = useState();
   const [isFocused, setFocus] = useState(false);
   const captionMessage = error || helperText;
   const showCaptionMessage = !!(error || (isFocused && helperText));
@@ -30,12 +31,12 @@ const TextInput = ({
     <FormGroup>
       <Input
         ref={ref}
+        value={field.value}
+        onChangeText={field.onChange}
         label={label && labelText}
-        status={error ? "danger" : "basic "}
+        status={error ? "danger" : "basic"}
         caption={showCaptionMessage ? captionMessage : undefined}
         captionIcon={showCaptionMessage ? AlertIcon : undefined}
-        value={value || ""}
-        onChangeText={setValue}
         disabled={disabled}
         onFocus={() => setFocus(true)}
         onBlur={() => setFocus(false)}

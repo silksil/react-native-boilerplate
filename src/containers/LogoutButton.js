@@ -1,9 +1,9 @@
 import { Button } from "@components/buttons";
-import { useAccount } from "@hooks/useAccount";
+import { useAuth } from "@hooks/useAuth";
 import React from "react";
 
 const LogoutButton = () => {
-  const { logout } = useAccount();
+  const { logout } = useAuth();
 
   return (
     <Button onPress={logout} title="Logout" width="100%" mt="s" status="basic">

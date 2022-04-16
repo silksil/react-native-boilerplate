@@ -1,82 +1,21 @@
-import { Box } from "@components/Box";
-import { Divider as BaseDivider } from "@components/Divider";
-import { ListItem } from "@components/List";
-import { SearchBar } from "@components/SearchBar";
-import { TopNavigation } from "@layouts/TopNavigation";
-import { useNavigation, useRoute } from "@react-navigation/native";
-import React, { useEffect, useState } from "react";
-import { FlatList } from "react-native";
+import React from "react";
 import { Icon } from "@components/Icon";
-import { useTheme } from "styled-components";
-
-const Divider = () => <BaseDivider mt="m" />;
-
-const renderNote = ({ navigate, item, index }) => {
-  const authors = "jo";
-
-  return (
-    <ListItem
-      key={index}
-      mb="m"
-      title={item.book.title}
-      subtitle={`by ${authors}`}
-      imgSrc={item.book.cover}
-      ItemSeparatorComponent={Divider}
-      onPress={() => navigate("BookDetail", { book: item })}
-    />
-  );
-};
+import { SearchUploads as SearchUploadsContainer } from "@containers/SearchUploads";
+import { LayoutBottomAndTopNavigation } from "@layouts/LayoutBottomAndTopNavigation";
+import { useNavigation } from "@react-navigation/native";
 
 function SearchUploads() {
-  const {
-    params: { notes },
-  } = useRoute();
-  const { goBack, navigate } = useNavigation();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [filteredNotes, setFilteredNotes] = useState([]);
-  const { bottomNavigationHeight } = useTheme();
-
-  useEffect(() => {
-    const filter =
-      notes &&
-      notes.filter(
-        note =>
-          note?.book?.authors?.name
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase()) ||
-          note?.book?.title?.toLowerCase().includes(searchQuery.toLowerCase()),
-      );
-
-    filter && setFilteredNotes(filter);
-  }, [notes, searchQuery]);
+  const { goBack } = useNavigation();
 
   return (
-    <Box
-      backgroundColor="background-basic-color-1"
-      flex={1}
-      pb={bottomNavigationHeight}
+    <LayoutBottomAndTopNavigation
+      title="All uploads"
+      accessoryLeft={
+        <Icon name="arrow-back-outline" onPress={() => goBack()} />
+      }
     >
-      <TopNavigation
-        title="All uploads"
-        accessoryLeft={
-          <Icon name="arrow-back-outline" onPress={() => goBack()} />
-        }
-      />
-
-      <SearchBar
-        mx="m"
-        mb="s"
-        placeholder="Search by title"
-        debounceDelay={200}
-        callback={value => setSearchQuery(value)}
-      />
-      <Box mx="m" flex={1} flexGrow={1}>
-        <FlatList
-          data={filteredNotes}
-          renderItem={props => renderNote({ navigate, ...props })}
-        />
-      </Box>
-    </Box>
+      <SearchUploadsContainer />
+    </LayoutBottomAndTopNavigation>
   );
 }
 
