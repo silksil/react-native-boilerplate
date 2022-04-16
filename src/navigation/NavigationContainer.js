@@ -4,7 +4,7 @@ import { any } from "prop-types";
 import React, { forwardRef } from "react";
 
 import { TabStack } from "./TabStack";
-import { BookDetail } from "@screens/bookDetail";
+import { Item } from "@screens/Item";
 import { useAuth } from "@hooks/useAuth";
 import { Login } from "@screens/Login";
 
@@ -23,7 +23,7 @@ const NavigationContainer = forwardRef(({ initialState }, ref) => {
       {isLoggedIn && (
         <Navigator initialRouteName="TabStack" headerMode={false}>
           <Screen name="TabStack" component={TabStack} />
-          <Screen name="BookDetail" component={BookDetail} />
+          <Screen name="Item" component={Item} />
         </Navigator>
       )}
     </BaseNavigationContainer>

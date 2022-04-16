@@ -19,7 +19,7 @@ const renderNote = ({ navigate, item, index }) => {
       subtitle={`by ${authors}`}
       imgSrc={item.book.cover}
       ItemSeparatorComponent={Divider}
-      onPress={() => navigate("BookDetail", { book: item })}
+      onPress={() => navigate("Item", { book: item })}
     />
   );
 };

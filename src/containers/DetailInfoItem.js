@@ -2,7 +2,7 @@ import { Box } from "@components/Box";
 import { Text } from "@components/Text";
 import React from "react";
 
-const BookInfo = ({ title, authors, description }) => {
+const DetailInfoItem = ({ title, authors, description }) => {
   const mappedAuthors = authors?.map(authors2 => authors2.name).join("& ");
 
   return (
@@ -33,4 +33,4 @@ const BookInfo = ({ title, authors, description }) => {
   );
 };
 
-export { BookInfo };
+export { DetailInfoItem };

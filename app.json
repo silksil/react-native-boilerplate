@@ -6,7 +6,7 @@
     "orientation": "portrait",
     "platforms": ["ios"],
     "icon": "./src/static/images/icon.png",
-    "scheme": "MyApp",
+    "scheme": "app",
     "splash": {
       "image": "./src/static/images/splash.png",
       "resizeMode": "contain",

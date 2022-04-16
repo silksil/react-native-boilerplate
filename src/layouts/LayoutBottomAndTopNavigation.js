@@ -11,6 +11,7 @@ function LayoutBottomAndTopNavigation({
   subtitle,
   accessoryLeft,
   accessoryRight,
+  ...props
 }) {
   const { bottomNavigationHeight } = useTheme();
 
@@ -21,6 +22,7 @@ function LayoutBottomAndTopNavigation({
       backgroundColor="background-basic-color-1"
       pb={bottomNavigationHeight}
       pt={8}
+      {...props}
     >
       <TopNavigation
         title={title}
