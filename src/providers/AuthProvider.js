@@ -1,7 +1,4 @@
 import React, { useState, useEffect, createContext } from "react";
-
-export const AuthContext = createContext();
-
 import {
   getAuthentication,
   setAuthentication,
@@ -13,13 +10,16 @@ import {
   signInAsync,
 } from "expo-apple-authentication";
 
+export const AuthContext = createContext();
+
 const AuthProvider = ({ children }) => {
   const [appleCredentials, setAppleCredentials] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const loginMutation = () => {};
-  const loading = false;
+  const isLoading = false;
 
+  /**
+   * On opening the app check whether the userToken exists in the storage.
+   */
   useEffect(() => {
     const fetchAppleCredentials = async () => {
       const credentials = await getAuthentication("apple");
@@ -29,34 +29,26 @@ const AuthProvider = ({ children }) => {
     fetchAppleCredentials();
   }, []);
 
-  useEffect(() => {
-    if (appleCredentials?.identityToken && !isLoggedIn) {
-      loginMutation();
-    }
-  }, [appleCredentials, isLoggedIn, loginMutation]);
-
-  const login = async props => {
-    console.log(props);
-    try {
-      const credentials = await signInAsync({
-        requestedScopes: [
-          AppleAuthenticationScope.FULL_NAME,
-          AppleAuthenticationScope.EMAIL,
-        ],
-      });
-
-      await setAuthentication("apple", credentials);
-      setAppleCredentials(credentials);
-    } catch (e) {
-      if (e.code === "ERR_CANCELED") {
-        Alert.alert(
-          "Authentication",
-          "You canceled the authentication process",
-        );
-      } else {
+  const login = async () => {
+    const credentials = await signInAsync({
+      requestedScopes: [
+        AppleAuthenticationScope.FULL_NAME,
+        AppleAuthenticationScope.EMAIL,
+      ],
+    })
+      .then(async () => {
+        await setAuthentication("apple", credentials);
+        setAppleCredentials(credentials);
+      })
+      .catch(async e => {
+        if (e.code === "ERR_CANCELED") {
+          Alert.alert(
+            "Authentication",
+            "You canceled the authentication process",
+          );
+        }
         Alert.alert("Authentication", e.code);
-      }
-    }
+      });
   };
 
   const logout = () => {
@@ -67,7 +59,7 @@ const AuthProvider = ({ children }) => {
 
   const value = {
     isLoggedIn,
-    loading,
+    isLoading,
     login,
     logout,
   };

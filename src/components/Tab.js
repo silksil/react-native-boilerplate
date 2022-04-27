@@ -1,8 +1,8 @@
-import { Box } from "../Box";
-import { Icon } from "../Icon";
-import { Text } from "../Text";
 import React from "react";
 import styled from "styled-components/native";
+import { Box } from "./Box";
+import { Icon } from "./Icon";
+import { Text } from "./Text";
 
 const Container = styled.TouchableWithoutFeedback``;
 

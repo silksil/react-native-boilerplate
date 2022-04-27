@@ -7,8 +7,6 @@ const StyledMessage = styled.View`
   display: flex;
   align-items: center;
   margin: 1rem 0;
-
-  // TODO: include correct color
   background-color: #ffb400;
   height: auto;
   line-height: 16px;

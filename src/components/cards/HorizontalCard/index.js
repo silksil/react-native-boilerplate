@@ -1,1 +1,0 @@
-export { HorizontalCard } from "./HorizontalCard";

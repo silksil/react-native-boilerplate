@@ -9,14 +9,12 @@ import { FlatList } from "react-native";
 const Divider = () => <BaseDivider mt="m" />;
 
 const renderNote = ({ navigate, item, index }) => {
-  const authors = "jo";
-
   return (
     <ListItem
       key={index}
       mb="m"
       title={item.book.title}
-      subtitle={`by ${authors}`}
+      subtitle={`by ${item.book.author}`}
       imgSrc={item.book.cover}
       ItemSeparatorComponent={Divider}
       onPress={() => navigate("Item", { book: item })}
@@ -26,7 +24,7 @@ const renderNote = ({ navigate, item, index }) => {
 
 function SearchUploads() {
   const {
-    params: { notes },
+    params: { books },
   } = useRoute();
   const { navigate } = useNavigation();
   const [searchQuery, setSearchQuery] = useState("");
@@ -34,8 +32,8 @@ function SearchUploads() {
 
   useEffect(() => {
     const filter =
-      notes &&
-      notes.filter(
+      books &&
+      books.filter(
         note =>
           note?.book?.authors?.name
             .toLowerCase()
@@ -44,7 +42,7 @@ function SearchUploads() {
       );
 
     filter && setFilteredNotes(filter);
-  }, [notes, searchQuery]);
+  }, [books, searchQuery]);
 
   return (
     <>

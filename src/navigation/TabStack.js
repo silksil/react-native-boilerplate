@@ -1,7 +1,7 @@
 import React from "react";
 import { useTheme } from "styled-components";
 
-import { Tab as TabComponent } from "@components/BottomTabNavigator";
+import { Tab as TabComponent } from "@components/Tab";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { UploadsStack } from "./UploadsStack";
