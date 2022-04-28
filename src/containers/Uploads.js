@@ -82,9 +82,9 @@ function Uploads() {
               imgHeight={IMAGE_HEIGHT}
               imgWidth={ITEM_WIDTH}
               height={`${ITEM_HEIGHT}px`}
-              title={item.book.title}
-              author={item.book.author?.name}
-              imgSrc={item.book.cover}
+              title={item.title}
+              author={item.author?.name}
+              imgSrc={item.cover}
             />
           )}
           inactiveSlideScale={100}

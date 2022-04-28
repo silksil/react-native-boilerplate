@@ -9,16 +9,16 @@ import { FilterButtons } from "./FilterButtons";
 
 const Divider = () => <BaseDivider mt="m" />;
 
-const renderNote = ({ navigate, item, index }) => {
+const renderNote = ({ navigate, item }) => {
   return (
     <ListItem
-      key={index}
+      key={item.id}
       mb="m"
-      title={item.book.title}
-      subtitle={`by ${item.book.author}`}
-      imgSrc={item.book.cover}
+      title={item.title}
+      subtitle={`by ${item.author}`}
+      imgSrc={item.cover}
       ItemSeparatorComponent={Divider}
-      onPress={() => navigate("Item", { book: item.book })}
+      onPress={() => navigate("Item", { book: item })}
     />
   );
 };
@@ -42,11 +42,11 @@ function SearchUploads() {
     const filter =
       books &&
       books.filter(
-        note =>
-          note?.book?.authors?.name
+        book =>
+          book?.authors?.name
             .toLowerCase()
             .includes(searchQuery.toLowerCase()) ||
-          note?.book?.title?.toLowerCase().includes(searchQuery.toLowerCase()),
+          book?.title?.toLowerCase().includes(searchQuery.toLowerCase()),
       );
 
     filter && setFilteredNotes(filter);
