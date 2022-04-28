@@ -1,8 +1,6 @@
 import React from "react";
-
 import { ScrollView } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
-
 import { LayoutBottomAndTopNavigation } from "@layouts/LayoutBottomAndTopNavigation";
 import { ArrowBackIcon } from "@components/ArrowBackIcon";
 import { DetailInfoItem } from "@containers/DetailInfoItem";
