@@ -63,7 +63,6 @@ Box.defaultProps = {
   title: null,
   imgSrc: null,
   imgHeight: "300px",
-
   styling: {},
 };
 

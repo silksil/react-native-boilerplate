@@ -6,15 +6,13 @@ import { useTheme } from "styled-components/native";
 import { useWindowDimensions } from "react-native";
 
 const ImageAndBlurredBackground = ({ cover }) => {
-  /**
-   * Styling variables
-   */
   const { bookCoverHeightToWidthRatio, blurTint } = useTheme();
   const windowHeight = useWindowDimensions().height;
   const blurredBoxHeight = windowHeight * 0.5;
   const blurredImageHeight = windowHeight * 0.45;
   const coverHeight = windowHeight * 0.3;
   const coverWidth = coverHeight * bookCoverHeightToWidthRatio;
+
   return (
     <Box height={`${blurredBoxHeight}px`}>
       <Image

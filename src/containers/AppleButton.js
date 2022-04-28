@@ -8,8 +8,10 @@ import {
 
 import { useTheme } from "styled-components";
 import { isAvailableAsync } from "expo-apple-authentication";
+import { useAuth } from "@hooks/useAuth";
 
 const AppleButton = () => {
+  const { login } = useAuth();
   const { radii, button } = useTheme();
   const deviceSupportsAppleAuthentication = isAvailableAsync();
 
@@ -19,9 +21,8 @@ const AppleButton = () => {
     <AppleAuthenticationButton
       buttonType={AppleAuthenticationButtonType.SIGN_IN}
       buttonStyle={AppleAuthenticationButtonStyle.BLACK}
-      // onPress={login}
+      onPress={login}
       cornerRadius={radii.m}
-      //eslint-disable-next-line
       style={{ width: "100%", height: button.l.height }}
     />
   );

@@ -30,14 +30,15 @@ function Uploads() {
   const ITEM_WIDTH = IMAGE_HEIGHT * bookCoverHeightToWidthRatio;
   const ITEM_WIDTH_WITH_SPACING = ITEM_WIDTH + space.m;
 
-  if (loading)
+  if (loading) {
     return (
       <Box flex={1} justifyContent="center" mb={bottomNavigationHeight}>
         <Loading />
       </Box>
     );
+  }
 
-  if (error)
+  if (error) {
     return (
       <ErrorMessage
         flex={1}
@@ -45,6 +46,7 @@ function Uploads() {
         mb={bottomNavigationHeight}
       />
     );
+  }
 
   return (
     <>

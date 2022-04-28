@@ -37,10 +37,16 @@ const AuthProvider = ({ children }) => {
       ],
     })
       .then(async () => {
-        await setAuthentication("apple", credentials);
+        console.log(credentials);
+        await setAuthentication("apple", "dummyCredentials");
+        console.l;
         setAppleCredentials(credentials);
+        setIsLoggedIn(true);
+
+        console.log(isLoggedIn);
       })
       .catch(async e => {
+        console.log(e);
         if (e.code === "ERR_CANCELED") {
           Alert.alert(
             "Authentication",
